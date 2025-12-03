@@ -12,32 +12,23 @@ namespace AdventOfCode.Solvers
             for(int i = 0; i < n; i++)
             {
                 long[,] dp = new long[m, 13];
-                for(int j = 0; j < m; j++)
+                for(int j = m - 1; j >= 0; j--) {
                     dp[j, 1] = (long)input[i, j];
+                    if(j + 1 < m)
+                        dp[j, 1] = Math.Max(dp[j, 1], dp[j + 1, 1]);
+                }
 
                 for(int d = 2; d <= 12; d++) {
                     for(int j = m - d; j >= 0; j--) {
-                        for(int k = j + 1; k <= m - d + 1; k++){
-                            dp[j, d] = Math.Max(dp[j, d], input[i, j] * MathUtils.Pow(10, d - 1) + dp[k, d - 1]);
-                        }
+                        dp[j, d] = input[i, j] * MathUtils.Pow(10, d - 1) + dp[j + 1, d - 1];
+                        dp[j, d] = Math.Max(dp[j, d], dp[j + 1, d]);
                     }
                 }
 
-                long mx = 0;
-                for(int j = 0; j < m; j++)
-                {
-                    mx = Math.Max(mx, dp[j, 12]);
-                }
-
-                ans += mx;
+                ans += dp[0, 12];
 
             }
             return ans;
         }
-        /**
-        dp[i][j] = maximumn jth digit number that can be formed using i and digits from i+1...n 
-        dp[i][j] = Math.Max(input[i] * 10 +  dp[k][j-1]) for  i < k < n
-        **/
-
     }
 }
