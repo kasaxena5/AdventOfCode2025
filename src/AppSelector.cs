@@ -39,6 +39,10 @@ namespace AdventOfCode
                     return new A_TrashCompactorQuestionApp(reader, writer);
                 case 12:
                     return new B_TrashCompactorQuestionApp(reader, writer);
+                case 13:
+                    return new A_LaboratoriesQuestionApp(reader, writer);
+                case 14:
+                    return new B_LaboratoriesQuestionApp(reader, writer);
                 default:
                     return new SampleQuestionApp(reader, writer);
             }
