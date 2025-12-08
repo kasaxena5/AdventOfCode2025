@@ -43,6 +43,10 @@ namespace AdventOfCode
                     return new A_LaboratoriesQuestionApp(reader, writer);
                 case 14:
                     return new B_LaboratoriesQuestionApp(reader, writer);
+                case 15:
+                    return new A_PlaygroundQuestionApp(reader, writer);
+                case 16:
+                    return new B_PlaygroundQuestionApp(reader, writer);
                 default:
                     return new SampleQuestionApp(reader, writer);
             }
