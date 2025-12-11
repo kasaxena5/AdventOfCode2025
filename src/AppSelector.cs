@@ -55,6 +55,10 @@ namespace AdventOfCode
                     return new A_FactoryQuestionApp(reader, writer);
                 case 20:
                     return new B_FactoryQuestionApp(reader, writer);
+                case 21:
+                    return new A_ReactorQuestionApp(reader, writer);
+                case 22:
+                    return new B_ReactorQuestionApp(reader, writer);
                 default:
                     return new SampleQuestionApp(reader, writer);
             }
